@@ -1,19 +1,29 @@
-// let doc = document.querySelector('.main_container');
-let doc = document.querySelector('html');
-let div = document.querySelector('.header_nav_list');
+let listRepos = document.querySelector(".repositories_list")
 
-// if(doc.computedStyleMap().get("width").value < 80){
-//     div.style.display = 'none';
-// }else{
-//     div.style.display = 'block';
-// }
 
-// while(doc.computedStyleMap().get("width").value < 1024){
-//     div.style.display = 'none';
-//     break
-// }
-// do{
-//     div.style.display = 'none';
-// }   while(doc.computedStyleMap().get("width").value < 1024)
+async function fetchRepos(){
+    let response = await fetch("https:/api.github.com/users/Mattferreira1/repos")
+    let data = await response.json()
+    console.log(data);
+   renderList(data) 
+}
 
-// console.log(doc.computedStyleMap().get("width").value);
+
+function renderList(data){
+    data.map(repo=>{
+        let novaDiv = document.createElement("li");
+        novaDiv.classList.add("list_item")
+        // console.log(repo.homepage)
+        // if(repo.homepage != null){
+        //     let iframe = document.createElement("iframe")
+        //     iframe.setAttribute("src", repo.homepage)
+        //     novaDiv.appendChild(iframe)
+        // }
+        novaDiv.innerHTML= `
+        <h1>${repo.name}</h1>`
+        listRepos.appendChild(novaDiv)
+    })
+}
+
+
+fetchRepos()
