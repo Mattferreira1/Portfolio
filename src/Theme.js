@@ -15,6 +15,8 @@ const Theme = {
    * Um tom de cinza claro usado para textos secundários, como a profissão.
    */
   textoSecundario: '#E0E0E0',
+  
+  subtexto:"#555555",
   /**
    * Cor de fundo do botão primário (Download CV).
    */
